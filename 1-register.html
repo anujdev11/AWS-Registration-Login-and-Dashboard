@@ -1,0 +1,233 @@
+<!-- <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+function onRegisterPressed() {
+
+	var Raspberry_Id=document.getElementById("Raspberry_ID").value;
+	var name=document.getElementById("name").value;
+	var email=document.getElementById("email").value;
+	var password=document.getElementById("password").value;
+
+	details='[{"RaspberryId":Raspberry_Id,"name":name,"email":email,"password":password}]'
+	var abc=JSON.parse(details);
+	alert(JSON.stringify(abc))
+}
+</script> -->
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+    //w();
+    function w() {
+    //alert("kkk");
+    var form_data = new FormData($('#aws-lambda')[0]);
+    $.ajax({
+        
+    url: 'https://8ma3imfdx5.execute-api.us-east-1.amazonaws.com/Development/reg',
+	crossDomain: true,
+	contentType:"json",
+	//accepts: "application/json",
+	//credentials: 'include',
+
+	/*xhrFields: {
+        withCredentials: true
+    },*/
+    //headers: ({"Content-Type": "text/plain","Access-Control-Allow-Origin":"*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}),
+    //headers: ('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS'),
+	headers: { 
+        'Content-Type': 'text/plain'
+
+        },
+    
+        type: 'POST',
+		dataType: "json",
+        
+    //data:JSON.stringify({"number":document.getElementById('Raspberry_ID').value}),
+	data:JSON.stringify({"R_id":document.getElementById('Raspberry_ID').value, "Name":document.getElementById('name').value, "Email":document.getElementById('email').value, "Password":document.getElementById('password').value}),
+    success: function(data) {
+			var statuscode=JSON.stringify(data.statusCode)
+			if(statuscode==200)
+			{
+				location.href = "Successful.html"
+			}
+            //alert(JSON.stringify(data));
+            //$('body').html=text;
+            //var RaspberryId = parseInt(data.body.Raspberry_Id)
+            //document.getElementById('r').value=JSON.stringify(parseInt(data.body.Raspberry_Id));
+           // document.getElementById('d').value=JSON.stringify(parseInt(data.body.Received_Data)+ " Cm");
+            //setTimeout(w, 200);
+    },
+    });
+	return false;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<div class="main wrapper">
+		<h1>REGISTER YOURSELF</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" id="aws-lambda" onsubmit="return false;" method="post">
+					<input class="text" type="text" id="Raspberry_ID" name="number" placeholder="Enter Raspberry ID" required=""><br><br>
+					<input class="text" type="text" id="name" name="name" placeholder="Name" required="">
+					<input class="text email" type="email" id="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" id= "password" name="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+					title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Password" id="myInput" required="">
+					<input type="checkbox" onclick="myFunction()">Show Password
+
+				  <!-- <div id="message"> -->
+					<!-- <h3>Password must contain the following:</h3> -->
+					<!-- <p id="letter" class="invalid">A <b>lowercase</b> letter</p> -->
+					<!-- <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p> -->
+					<!-- <p id="number" class="invalid">A <b>number</b></p> -->
+					<!-- <p id="length" class="invalid">Minimum <b>8 characters</b></p> -->
+				  <!-- </div> -->
+
+					<div class="wthree-text">
+						<label class="anim">
+							<!-- <input type="checkbox" class="checkbox" required=""> -->
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+
+					<input type="submit" value="SIGNUP" onclick="w()">
+
+				</form>
+				<p>Don't have an Account? <a href="2-login.html"> Login Now!</a></p>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	<!-- for better-->>
+	</div>
+	<!-- //main -->
+
+<!-- <script>
+	var myInput = document.getElementById("psw");
+	var letter = document.getElementById("letter");
+	var capital = document.getElementById("capital");
+	var number = document.getElementById("number");
+	var length = document.getElementById("length");
+	
+	// When the user clicks on the password field, show the message box
+	myInput.onfocus = function() {
+	  document.getElementById("message").style.display = "block";
+	}
+	
+	// When the user clicks outside of the password field, hide the message box
+	myInput.onblur = function() {
+	  document.getElementById("message").style.display = "none";
+	}
+	
+	// When the user starts to type something inside the password field
+	myInput.onkeyup = function() {
+	  // Validate lowercase letters
+	  var lowerCaseLetters = /[a-z]/g;
+	  if(myInput.value.match(lowerCaseLetters)) { 
+		letter.classList.remove("invalid");
+		letter.classList.add("valid");
+	  } else {
+		letter.classList.remove("valid");
+		letter.classList.add("invalid");
+	}
+	
+	  // Validate capital letters
+	  var upperCaseLetters = /[A-Z]/g;
+	  if(myInput.value.match(upperCaseLetters)) { 
+		capital.classList.remove("invalid");
+		capital.classList.add("valid");
+	  } else {
+		capital.classList.remove("valid");
+		capital.classList.add("invalid");
+	  }
+	
+	  // Validate numbers
+	  var numbers = /[0-9]/g;
+	  if(myInput.value.match(numbers)) { 
+		number.classList.remove("invalid");
+		number.classList.add("valid");
+	  } else {
+		number.classList.remove("valid");
+		number.classList.add("invalid");
+	  }
+	
+	  // Validate length
+	  if(myInput.value.length >= 8) {
+		length.classList.remove("invalid");
+		length.classList.add("valid");
+	  } else {
+		length.classList.remove("valid");
+		length.classList.add("invalid");
+	  }
+	}
+	</script>
+
+<script>
+	function myFunction() {
+	  var x = document.getElementById("myInput");
+	  if (x.type === "password") {
+		x.type = "text";
+	  } else {
+		x.type = "password";
+	  }
+	}
+	</script>
+
+<button id="myButton" class="float-left submit-button" >Home</button>
+
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "";
+		//need to put url or html
+    };
+</script>
+
+</body>
+</html>
+ -->

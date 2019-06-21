@@ -1,0 +1,128 @@
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script src="Cookies.js"></script>
+<script type=text/javascript>
+    //w();
+    function w() {
+    //alert("kkk");
+	var form_data = new FormData($('#aws-lambda')[0]);
+    $.ajax({
+    url: 'https://8ma3imfdx5.execute-api.us-east-1.amazonaws.com/Login/login',
+	crossDomain: true,
+	contentType:"json",
+	headers: { 
+        'Content-Type': 'text/plain'
+        },
+    
+        type: 'POST',
+		dataType: "json",
+	data:JSON.stringify({ "Raspberry_Id":document.getElementById('Raspberry_Id').value,"LEmail":document.getElementById('lemail').value, "LPassword":document.getElementById('lpassword').value}),
+    success: function(data) {
+		var statuscode=JSON.stringify(data.statusCode)
+			if(statuscode==200){
+			//var a=readCookie("Raspberry_Id");
+			//alert(a)*/
+			//Cookies.set("Raspberry_Id",document.getElementById('Raspberry_Id').value, {expiry : 3600});
+			//var Raspberry_Id=  Cookies.get(Raspberry_Id");
+			var now = new Date();
+			now.setMonth( now.getMonth() + 1 );
+			cookievalue = escape(document.getElementById('Raspberry_Id').value) + ";"
+			document.cookie="name=" + cookievalue;
+			//alert("Setting Cookies : " + "name=" + cookievalue );
+			location.href = "3-display.html"
+			}
+			else{
+				alert("Enter Right Credentials")
+			}
+    },
+    });
+	return false;
+}
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Form</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}" > -->
+
+<!-- //Custom Theme files -->
+<!-- web font -->
+<!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet"> -->
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<div class="main wrapper">
+		<h1>LOGIN YOURSELF</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" name="myform" onsubmit="return false;" method="post">
+					<input class="text" type="text" id="Raspberry_Id" name="Raspberry_Id" placeholder="Raspberry Id" required="">
+					<input class="text email" type="email" id="lemail" name="lemail" placeholder="Email" required="">
+					<input class="text" type="password" id="lpassword" name="lpassword" placeholder="Password" value="" id="myInput" required=""><br><br>
+					<input type="checkbox" onclick="myFunction()">Show Password
+
+					<input type="submit" value="Login" onclick="w()">
+				</form>
+				
+			</div>
+		</div>
+		
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+
+<script>
+	function myFunction() {
+	  var x = document.getElementById("myInput");
+	  if (x.type === "password") {
+		x.type = "text";
+	  } else {
+		x.type = "password";
+	  }
+	}
+	</script>
+<!-- <script>
+	var today = new Date();
+	var expiry = new Date(today.getTime() + 30 * 86400 * 1000); // plus 30 days
+
+	function setCookie(name, value)
+	{
+		document.cookie = name + "=" + escape(value) + "; expires=" + expiry.toGMTString() + "; path=/";
+	}
+	setCookie("field1","Hi");
+	function getCookie(name)
+		{
+			var re = new RegExp(name + "=([^;]+)");
+			var value = re.exec(document.cookie);
+			return (value != null) ? unescape(value[1]) : null;
+		}
+	var a=getCookie("field1")
+	alert(a)
+
+</script>-->
+</body>
+</html> 

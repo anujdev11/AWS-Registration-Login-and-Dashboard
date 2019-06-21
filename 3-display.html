@@ -1,0 +1,96 @@
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script type=text/javascript>
+    var allcookies = document.cookie;
+    cookiearray = allcookies.split(';');
+    for(var i=0; i<cookiearray.length; i++) {
+    //name = cookiearray[i].split('=')[0];
+    value = cookiearray[i].split('=')[1];
+    }
+    w();
+    function w() {
+    //alert("kkk");
+    //var form_data = new FormData($('#aws-mqtt')[0]);
+    $.ajax({
+        
+    url: 'https://9ai4kmn4q8.execute-api.us-east-1.amazonaws.com/DEP/datareceive',
+    crossDomain: true,
+	contentType:"json",
+    headers: { 
+        'Content-Type': 'text/plain'
+        },
+    
+        type: 'POST',
+        dataType: "json",
+    data:JSON.stringify({"Raspberry_Id":value}),
+    success: function(data) {
+            //alert(JSON.stringify(data.body.Name));
+            //$('body').html=text;
+            //var RaspberryId = parseInt(data.body.Raspberry_Id)
+            var UName=JSON.stringify(data.body.Name)
+            document.getElementById('name').value=UName;
+            document.getElementById('r').value=JSON.stringify(parseInt(data.body.Raspberry_Id));
+            document.getElementById('d').value=JSON.stringify(parseInt(data.body.Received_Data)+ " Cm");
+            setTimeout(w, 200);
+    },
+    });
+    return false;
+    }
+</script>
+<html>
+    <head>
+        <title>Login Form</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- Custom Theme files -->
+        <link href="reg.css" rel="stylesheet" type="text/css" media="all" />
+        
+        <!-- <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}" > -->
+        
+        <!-- //Custom Theme files -->
+        <!-- web font -->
+        <!-- //web font -->
+        </head>
+        <body>
+                <br><br><br>
+            <!-- main -->
+            <div class="main wrapper">
+                <div class="main-agileinfo">
+                
+                    <div class="agileits-top">
+                        <form action="#" method="post">
+                            
+                            User Name:<input class="text email" type="text" name="username" placeholder="Your Name" id="name" required="">
+                            Raspberry Id:<input class="text email" type="text" name="Raspberry_Id" placeholder="Your Raspberry Id" id="r" required="">
+                            Tank Level:<br><br> <input class="text" type="text" name="" placeholder="Tank Level" value="" id="d" required=""><br><br>
+        
+                        </form>
+                        
+                    </div>
+                    <br><br>
+                </div>
+                
+                <ul class="colorlib-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <!-- //main -->
+        
+        </body>
+        </html>
+
