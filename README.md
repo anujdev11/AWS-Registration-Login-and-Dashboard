@@ -30,4 +30,4 @@ With this you&#39;ll be able configure Amazon Simple Storage Service (S3) to hos
 
 For Implementation Steps Refer
 
-[Link To Implementation Blog](https://goldenmace.com/blog/labs/explore-how-future-of-aws-greengrass-hinges-on-dynamodbpart-ii/ "Blog")
+[Link To Blog for Implementation](https://goldenmace.com/blog/labs/explore-how-future-of-aws-greengrass-hinges-on-dynamodbpart-ii/ "Blog")
