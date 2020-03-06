@@ -6,7 +6,7 @@ With this you&#39;ll be able configure Amazon Simple Storage Service (S3) to hos
 
 **S3 Bucket:**
 
-![alt text](https://github.com/Images/S3bucket.png "Image")
+![alt text](https://github.com/anujdev11/Images/S3bucket.png "Image")
 
 **Registration Page:**
 
