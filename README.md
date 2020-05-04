@@ -2,7 +2,7 @@
 
 For Implementation Steps Refer
 
-[Link To Blog for Implementation](https://goldenmace.com/blog/labs/explore-how-future-of-aws-greengrass-hinges-on-dynamodbpart-ii/ "Blog")
+[Link To Blog for Implementation](https://anujdev11.blogspot.com/2020/05/static-registration-and-login-page-with.html)
 
 **Introduction:**
 
