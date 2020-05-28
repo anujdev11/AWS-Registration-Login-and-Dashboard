@@ -2,7 +2,7 @@
 
 For Implementation Steps Refer
 
-[Link To Blog for Implementation](https://anujdev11.blogspot.com/2020/05/static-registration-and-login-page-with.html)
+[Link To Blog for Implementation](https://medium.com/@anujdev11/static-registration-and-login-page-with-aws-s3-36e487d7856c)
 
 **Introduction:**
 
